@@ -1,24 +1,35 @@
 import React from 'react'
-import 'css/markdown-styles.css'
+import 'less/markdown-styles.less'
 import Helmet from 'react-helmet'
 import { config } from 'config'
+import extraConfig from 'extraConfig'
+import access from 'safe-access'
+import Components from 'components/';
 
 module.exports = React.createClass({
+
   propTypes () {
     return {
       router: React.PropTypes.object,
     }
   },
+
   render () {
-    const post = this.props.route.page.data
+
+    const dirname = this.props.route.page.file.dirname;
+    const post = this.props.route.page.data;
+
+    let Component = Components[dirname] || Components["generic"];
+
     return (
-      <div className="markdown">
+      <div>
         <Helmet
-          title={`${config.siteTitle} | ${post.title}`}
+          title={`${extraConfig.siteTitle} | ${post.title}`}
         />
-        <h1>{post.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.body }} />
+
+        <Component { ...post } />
+
       </div>
     )
   },
-})
+});

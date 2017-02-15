@@ -1,57 +1,29 @@
 import React from 'react'
 import { Container } from 'react-responsive-grid'
-import { Link } from 'react-router'
-import { prefixLink } from 'gatsby-helpers'
-import Headroom from 'react-headroom'
-import '../css/markdown-styles'
+import { rhythm, scale } from 'utils/typography'
 
-import { rhythm } from '../utils/typography'
-
-module.exports = React.createClass({
-  propTypes () {
-    return {
-      children: React.PropTypes.any,
-    }
-  },
+class PageTemplate extends React.Component {
   render () {
+    const { location, children } = this.props
     return (
-      <div>
-        <Headroom
-          wrapperStyle={{
-            marginBottom: rhythm(1),
-          }}
-          style={{
-            background: 'lightgray',
-          }}
-        >
-          <Container
-            style={{
-              maxWidth: 960,
-              paddingTop: 0,
-              padding: `${rhythm(1)} ${rhythm(3/4)}`,
-            }}
-          >
-            <Link
-              to={prefixLink('/')}
-              style={{
-                color: 'black',
-                textDecoration: 'none',
-              }}
-            >
-              Gatsby!!!
-            </Link>
-          </Container>
-        </Headroom>
+      <div className="page-template">
         <Container
           style={{
-            maxWidth: 960,
-            padding: `${rhythm(1)} ${rhythm(3/4)}`,
-            paddingTop: 0,
+            maxWidth: rhythm(24),
+            padding: `${rhythm(1.5)} ${rhythm(3/4)}`,
           }}
         >
-          {this.props.children}
+          {children }
         </Container>
       </div>
     )
-  },
-})
+  }
+}
+
+PageTemplate.propTypes = {
+  children: React.PropTypes.any,
+  location: React.PropTypes.object,
+  route: React.PropTypes.object,
+}
+
+export default PageTemplate
