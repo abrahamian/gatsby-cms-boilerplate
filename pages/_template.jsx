@@ -1,62 +1,19 @@
 import React from 'react'
+import { rhythm, scale } from 'utils/typography'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router'
-import { prefixLink } from 'gatsby-helpers'
-import Helmet from 'react-helmet'
-import { config } from 'config'
-import { rhythm } from '../utils/typography'
 
-export default class Template extends React.Component {
+export default class PageTemplate extends React.Component {
   static propTypes = {
-    children: PropTypes.any
+    children: PropTypes.any,
+    location: PropTypes.object,
+    route: PropTypes.object,
   }
 
-  render() {
+  render () {
+    const { location, children } = this.props
     return (
-      <div>
-        <Helmet
-          title={config.siteTitle}
-          meta={[
-            { name: "description", content: "Sample" },
-            { name: "keywords", content: "sample, something" },
-          ]}
-        />
-        <div
-          style={{
-            background: `rebeccapurple`,
-            marginBottom: rhythm(1),
-          }}
-        >
-          <div
-            style={{
-              margin: `0 auto`,
-              maxWidth: 960,
-              padding: `${rhythm(1)} ${rhythm(3 / 4)}`,
-            }}
-          >
-            <h1 style={{ margin: 0 }}>
-              <Link
-                to={prefixLink("/")}
-                style={{
-                  color: "white",
-                  textDecoration: "none",
-                }}
-              >
-                Gatsby
-              </Link>
-            </h1>
-          </div>
-        </div>
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `${rhythm(1)} ${rhythm(3 / 4)}`,
-            paddingTop: 0,
-          }}
-        >
-          {this.props.children}
-        </div>
+      <div className="page-template">
+        { children }
       </div>
     )
   }
