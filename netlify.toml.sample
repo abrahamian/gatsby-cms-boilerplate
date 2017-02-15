@@ -1,0 +1,7 @@
+[build]
+  command = "./node_modules/.bin/dato dump --token=SITE_SPECIFIC_READ_ONLY_API_KEY && npm run build"
+  publish = "public"
+
+[template.environment]
+  NODE_ENV = "production"
+  YARN_VERSION = "0.18.0"
