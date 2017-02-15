@@ -1,0 +1,31 @@
+module.exports = (dato, root, i18n) => {
+
+    root.createDataFile(
+      'extraConfig.toml',
+      'toml',
+      {
+        siteTitle: dato.extraConfig.siteTitle,
+        authorName: dato.extraConfig.authorName
+      }
+    );
+
+  // TODO: loop through list of different post types (defined somewhere...) and create the corresponding files
+
+  root.directory('pages/articles', dir => {
+
+    dato.articles.forEach(article => {
+      dir.createPost(
+        `${article.slug}.md`,
+        'yaml',
+        {
+          frontmatter: {
+            title: article.title,
+          },
+          content: article.content
+        }
+      );
+    });
+
+  })
+
+};
