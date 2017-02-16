@@ -27,7 +27,3 @@ build/Release
 node_modules
 .gatsby-context.js
 .sass-cache/
-
-# Secrets
-dato.config.js
-netlify.toml
