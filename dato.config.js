@@ -4,7 +4,7 @@ const _ = require('underscore');
 
 module.exports = (dato, root, i18n) => {
 
-    // TODO: use an array of where dato.itemTypes intersects with locally defined ItemTypes.
+    // TODO: make an array of where data.itemTypes intersects with locally defined ItemTypes.
 
     ItemTypes.forEach( ({ directory, mapDataToFileName, mapDataToMd }) => {
 
