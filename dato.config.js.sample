@@ -1,31 +1,17 @@
+const pagesDirPrefix = "pages/"
+const ItemTypes = require('./config/ItemTypes.js');
+const _ = require('underscore');
+
 module.exports = (dato, root, i18n) => {
 
-    root.createDataFile(
-      'extraConfig.toml',
-      'toml',
-      {
-        siteTitle: dato.extraConfig.siteTitle,
-        authorName: dato.extraConfig.authorName
-      }
-    );
+    // TODO: use an array of where dato.itemTypes intersects with locally defined ItemTypes.
 
-  // TODO: loop through list of different post types (defined somewhere...) and create the corresponding files
+    ItemTypes.forEach( ({ directory, mapDataToFileName, mapDataToMd }) => {
 
-  root.directory('pages/articles', dir => {
+        root.directory( (pagesDirPrefix + directory), dir => {
+            dato[directory].forEach( item => { dir.createPost( mapDataToFileName(item), 'yaml', mapDataToMd(item)) } )
+        })
 
-    dato.articles.forEach(article => {
-      dir.createPost(
-        `${article.slug}.md`,
-        'yaml',
-        {
-          frontmatter: {
-            title: article.title,
-          },
-          content: article.content
-        }
-      );
-    });
-
-  })
+    })
 
 };
