@@ -4,9 +4,31 @@ const _ = require('underscore');
 
 module.exports = (dato, root, i18n) => {
 
-    // TODO: make an array of where data.itemTypes intersects with locally defined ItemTypes.
+	var itemTypes = dato.itemTypes.reduce(
+		(memo, {name, fields}) => (
+			_(memo).extend(
+				{
+					[name] : {
+						"fields" : fields.reduce(
+							(m, {label, fieldType}) => _(m).extend({ [label]: { 'type' : fieldType} }), {}
+						)
+					}
+				}
+			)
+		),
+		{}
+	);
 
-    ItemTypes.forEach( ({ directory, mapDataToFileName, mapDataToMd }) => {
+	root.directory('dato', dir => {
+		dir.createDataFile(
+			'itemTypes' + '.json',
+			'json',
+			itemTypes
+		)
+	})
+
+    _(ItemTypes).keys().forEach( key => {
+		let { directory, mapDataToFileName, mapDataToMd } = ItemTypes[key];
 
         root.directory( (pagesDirPrefix + directory), dir => {
             dato[directory].forEach( item => { dir.createPost( mapDataToFileName(item), 'yaml', mapDataToMd(item)) } )

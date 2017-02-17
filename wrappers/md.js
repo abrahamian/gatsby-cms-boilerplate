@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import { config } from 'config'
 import extraConfig from 'extraConfig'
 import access from 'safe-access'
-import Components from 'components/';
+import * as components from 'components';
 
 export default class Markdown extends React.Component {
 
@@ -18,7 +18,7 @@ export default class Markdown extends React.Component {
     const dirname = this.props.route.page.file.dirname;
     const post = this.props.route.page.data;
 
-    let Component = Components[dirname] || Components["generic"];
+    let Component = components[dirname] || components["generic"];
 
     return (
       <div>

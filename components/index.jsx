@@ -1,12 +1,4 @@
-import Article from 'components/Article';
-import Generic from 'components/Generic';
-import Event from 'components/Event';
-
-import BlogIndex from 'components/BlogIndex';
-
-export default {
-    "articles" : Article,
-    "generic" : Generic,
-    "events" : Event,
-    "BlogIndex" : BlogIndex
-}
+export { default as articles } from 'components/Article';
+export { default as generic } from 'components/Generic';
+export { default as events } from 'components/Event';
+export { default as BlogIndex } from 'components/BlogIndex';

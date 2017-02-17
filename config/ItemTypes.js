@@ -1,8 +1,6 @@
-module.exports = [
-    {
+module.exports = {
+    "article" : {
         directory: "articles",
-        plural : "articles",
-        singular : "article",
         mapDataToFileName: ({slug}) => (`${slug}.md`),
         mapDataToMd : ({title, content}) => ({
 
@@ -12,12 +10,10 @@ module.exports = [
 
             content: content
         })
-    }
+    },
 
-    ,{
+    "event": {
         directory: "events",
-        plural : "events",
-        singular : "event",
         mapDataToFileName: ({slug}) => (`${slug}.md`),
         mapDataToMd : ({title, date, description}) => ({
 
@@ -29,4 +25,4 @@ module.exports = [
             content: description
         })
     }
-]
+}
