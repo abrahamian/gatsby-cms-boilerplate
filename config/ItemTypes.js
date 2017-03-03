@@ -15,14 +15,23 @@ module.exports = {
     "event": {
         directory: "events",
         mapDataToFileName: ({slug}) => (`${slug}.md`),
-        mapDataToMd : ({title, date, description}) => ({
+        mapDataToMd : ({title, date, description, image}) => {
+            if(image){console.log(image.file.url());}
 
-            frontmatter: {
-                title: title,
-                date: date
-            },
+            var md = {
+                frontmatter: {
+                    title: title,
+                    date: date
+                },
 
-            content: description
-        })
+                content: description
+            }
+
+            if(image){ md['frontmatter']['imageUrl'] = image.file.url(); }
+
+            return md;
+
+        }
     }
+
 }

@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import 'less/markdown-styles.less'
 import Helmet from 'react-helmet'
 import { config } from 'config'
-import extraConfig from 'extraConfig'
-import access from 'safe-access'
-import * as components from 'components';
+import extraConfig from 'dato/config'
+import * as components from 'components'
 
 export default class Markdown extends React.Component {
 

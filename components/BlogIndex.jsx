@@ -5,7 +5,7 @@ import { prefixLink } from 'gatsby-helpers'
 import { rhythm } from 'utils/typography'
 import Helmet from "react-helmet"
 import access from 'safe-access'
-import extraConfig from 'extraConfig'
+import extraConfig from 'dato/config'
 import include from 'underscore.string/include'
 
 

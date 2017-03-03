@@ -25,6 +25,29 @@
       },
       "slug": {
         "type": "slug"
+      },
+      "image": {
+        "type": "link"
+      }
+    }
+  },
+  "image": {
+    "fields": {
+      "file": {
+        "type": "image"
+      },
+      "title": {
+        "type": "string"
+      }
+    }
+  },
+  "Config": {
+    "fields": {
+      "siteTitle": {
+        "type": "string"
+      },
+      "authorName": {
+        "type": "string"
       }
     }
   }

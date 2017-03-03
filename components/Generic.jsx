@@ -1,10 +1,11 @@
 import React from 'react'
+import 'less/markdown-styles.less'
 
-const Generic = ({body}) => (
+const GenericMarkdown = ({body}) => (
     <div
         className="generic"
         dangerouslySetInnerHTML={{__html: body}}
     />
 )
 
-export default Generic;
+export default GenericMarkdown;
