@@ -1,24 +1,30 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 import { prefixLink } from 'gatsby-helpers'
-import { TypographyStyle, GoogleFont } from 'react-typography'
+import { TypographyStyle } from 'react-typography'
 import typography from './utils/typography'
 
 const BUILD_TIME = new Date().getTime()
 
-module.exports = React.createClass({
-  propTypes () {
-    return {
-      body: React.PropTypes.string,
-    }
-  },
-  render () {
+export default class HTML extends React.Component {
+  static propTypes = {
+    body: PropTypes.string
+  }
+
+  render() {
     const head = Helmet.rewind()
 
     let css
     if (process.env.NODE_ENV === 'production') {
-      css = <style dangerouslySetInnerHTML={{ __html: require('!raw!./public/styles.css') }} />
+      css = (
+        <style
+          dangerouslySetInnerHTML={{
+            __html: require('!raw!./public/styles.css'),
+          }}
+        />
+      )
     }
 
     return (
@@ -33,14 +39,16 @@ module.exports = React.createClass({
           {head.title.toComponent()}
           {head.meta.toComponent()}
           <TypographyStyle typography={typography} />
-          <GoogleFont typography={typography} />
           {css}
         </head>
         <body>
-          <div id="react-mount" dangerouslySetInnerHTML={{ __html: this.props.body }} />
+          <div
+            id="react-mount"
+            dangerouslySetInnerHTML={{ __html: this.props.body }}
+          />
           <script src={prefixLink(`/bundle.js?t=${BUILD_TIME}`)} />
         </body>
       </html>
     )
-  },
-})
+  }
+}
