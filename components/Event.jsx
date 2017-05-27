@@ -1,16 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Generic from 'components/Generic'
 
 class Event extends React.Component {
 
   static propTypes = {
-    title: React.PropTypes.string.isRequired,
-    date: React.PropTypes.string.isRequired,
-    body: React.PropTypes.string.isRequired,
-
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired
   }
 
-  render () {
+  render() {
     const {title, body, imageUrl} = this.props;
     const theDate = new Date(this.props.date).toDateString();
 

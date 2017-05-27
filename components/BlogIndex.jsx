@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import sortBy from 'lodash/sortBy'
 import { prefixLink } from 'gatsby-helpers'
@@ -9,8 +10,13 @@ import extraConfig from 'dato/config'
 import include from 'underscore.string/include'
 
 
-class BlogIndex extends React.Component {
-  render () {
+export default class BlogIndex extends React.Component {
+
+  static propTypes = {
+    route: PropTypes.object
+  }
+
+  render() {
 
     const pageLinks = []
     // Sort pages.
@@ -50,9 +56,3 @@ class BlogIndex extends React.Component {
     )
   }
 }
-
-BlogIndex.propTypes = {
-  route: React.PropTypes.object,
-}
-
-export default BlogIndex

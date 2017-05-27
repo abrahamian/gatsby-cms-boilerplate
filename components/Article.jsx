@@ -1,14 +1,15 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Generic from 'components/Generic'
 
-class Article extends React.Component {
+export default class Article extends React.Component {
 
   static propTypes = {
-    title: React.PropTypes.string.isRequired,
-    body: React.PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired
   }
 
-  render () {
+  render() {
     const {title, body} = this.props;
 
     return (
@@ -19,5 +20,3 @@ class Article extends React.Component {
     )
   }
 }
-
-export default Article;
